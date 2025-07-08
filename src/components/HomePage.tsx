@@ -176,49 +176,56 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* AIおすすめスポット Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-50 to-indigo-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center">
-              <span className="mr-3"><Lightbulb className="w-8 h-8 text-yellow-500" /></span>
+      <section className="py-16 bg-gradient-to-br from-gold-50 via-yellow-50 to-orange-50 relative overflow-hidden">
+        {/* AI-themed background elements */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-20 left-20 w-32 h-32 bg-gold-300/30 rounded-full blur-xl animate-pulse-soft"></div>
+          <div className="absolute bottom-20 right-20 w-40 h-40 bg-yellow-300/30 rounded-full blur-xl animate-pulse-soft" style={{animationDelay: '1s'}}></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-orange-300/20 rounded-full blur-3xl animate-pulse-soft" style={{animationDelay: '2s'}}></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-6 relative">
+          <div className="text-center mb-12 animate-fade-in-up">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center font-display">
+              <span className="mr-3"><Lightbulb className="w-8 h-8 text-gold-500 animate-pulse-soft" /></span>
               AIおすすめスポット
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto font-light">
               AIがあなたにぴったりの観光スポットを提案します
             </p>
           </div>
-          <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-8 mb-8 border border-white/20 hover:shadow-2xl transition-all duration-500 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Lightbulb className="w-8 h-8 text-yellow-500" />
+              <div className="text-center group">
+                <div className="w-16 h-16 bg-gold-gradient rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-glow-gold">
+                  <Lightbulb className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">パーソナライズ提案</h3>
-                <p className="text-gray-600">あなたの好みや旅程に合わせてAIがスポットを厳選</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-gold-600 transition-colors font-display">パーソナライズ提案</h3>
+                <p className="text-gray-600 group-hover:text-gray-700 transition-colors">あなたの好みや旅程に合わせてAIがスポットを厳選</p>
               </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Star className="w-8 h-8 text-blue-500" />
+              <div className="text-center group">
+                <div className="w-16 h-16 bg-indigo-gradient rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-glow-indigo">
+                  <Star className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">レビュー分析</h3>
-                <p className="text-gray-600">SNSや口コミをAIが分析し、人気スポットを抽出</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors font-display">レビュー分析</h3>
+                <p className="text-gray-600 group-hover:text-gray-700 transition-colors">SNSや口コミをAIが分析し、人気スポットを抽出</p>
               </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <TrendingUp className="w-8 h-8 text-green-500" />
+              <div className="text-center group">
+                <div className="w-16 h-16 bg-forest-gradient rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <TrendingUp className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">最新トレンド</h3>
-                <p className="text-gray-600">今話題のスポットや旬の情報をリアルタイムで提案</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-forest-600 transition-colors font-display">最新トレンド</h3>
+                <p className="text-gray-600 group-hover:text-gray-700 transition-colors">今話題のスポットや旬の情報をリアルタイムで提案</p>
               </div>
             </div>
             <div className="text-center mt-8">
               <button
                 onClick={() => navigate('/ai-recommendation')}
-                className="inline-flex items-center gap-3 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                className="group inline-flex items-center gap-3 bg-gold-gradient hover:shadow-glow-gold text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
-                <Lightbulb className="w-5 h-5" />
+                <Lightbulb className="w-5 h-5 group-hover:scale-110 transition-transform" />
                 AIおすすめスポットを見る
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           </div>
@@ -226,49 +233,56 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* 旅の相談 Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-50 to-indigo-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center">
-              <span className="mr-3"><MessageSquarePlus className="w-8 h-8 text-blue-500" /></span>
+      <section className="py-16 bg-gradient-to-br from-indigo-50 via-blue-50 to-purple-50 relative overflow-hidden">
+        {/* Chat-themed background elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-24 h-24 bg-indigo-300/40 rounded-lg rotate-12 animate-float"></div>
+          <div className="absolute top-20 right-20 w-32 h-32 bg-blue-300/40 rounded-lg -rotate-12 animate-float" style={{animationDelay: '1s'}}></div>
+          <div className="absolute bottom-20 left-1/4 w-20 h-20 bg-purple-300/40 rounded-lg rotate-45 animate-float" style={{animationDelay: '2s'}}></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-6 relative">
+          <div className="text-center mb-12 animate-fade-in-up">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center font-display">
+              <span className="mr-3"><MessageSquarePlus className="w-8 h-8 text-indigo-500 animate-pulse-soft" /></span>
               旅の相談
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto font-light">
               プロや他の旅行者に旅の悩みやプランを気軽に相談できます
             </p>
           </div>
-          <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-8 mb-8 border border-white/20 hover:shadow-2xl transition-all duration-500 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <MessageSquarePlus className="w-8 h-8 text-blue-500" />
+              <div className="text-center group">
+                <div className="w-16 h-16 bg-indigo-gradient rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-glow-indigo">
+                  <MessageSquarePlus className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">プロに相談</h3>
-                <p className="text-gray-600">旅行プランナーがあなたの旅をサポート</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors font-display">プロに相談</h3>
+                <p className="text-gray-600 group-hover:text-gray-700 transition-colors">旅行プランナーがあなたの旅をサポート</p>
               </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <User className="w-8 h-8 text-green-500" />
+              <div className="text-center group">
+                <div className="w-16 h-16 bg-forest-gradient rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <User className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">みんなのQ&A</h3>
-                <p className="text-gray-600">他の旅行者の質問・回答も参考にできる</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-forest-600 transition-colors font-display">みんなのQ&A</h3>
+                <p className="text-gray-600 group-hover:text-gray-700 transition-colors">他の旅行者の質問・回答も参考にできる</p>
               </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <ClipboardList className="w-8 h-8 text-yellow-500" />
+              <div className="text-center group">
+                <div className="w-16 h-16 bg-gold-gradient rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-glow-gold">
+                  <ClipboardList className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">相談履歴</h3>
-                <p className="text-gray-600">過去の相談内容もいつでも見返せる</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-gold-600 transition-colors font-display">相談履歴</h3>
+                <p className="text-gray-600 group-hover:text-gray-700 transition-colors">過去の相談内容もいつでも見返せる</p>
               </div>
             </div>
             <div className="text-center mt-8">
               <button
                 onClick={() => navigate('/custom-plan/new')}
-                className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                className="group inline-flex items-center gap-3 bg-indigo-gradient hover:shadow-glow-indigo text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
-                <MessageSquarePlus className="w-5 h-5" />
+                <MessageSquarePlus className="w-5 h-5 group-hover:scale-110 transition-transform" />
                 旅の相談をする
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           </div>
@@ -276,49 +290,56 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* 旅のしおり Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-50 to-indigo-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center">
-              <span className="mr-3"><Bookmark className="w-8 h-8 text-pink-500" /></span>
+      <section className="py-16 bg-gradient-to-br from-sakura-50 via-pink-50 to-rose-50 relative overflow-hidden">
+        {/* Bookmark-themed background elements */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-16 left-16 w-28 h-28 bg-sakura-300/40 rounded-lg rotate-6 animate-float"></div>
+          <div className="absolute top-32 right-16 w-24 h-24 bg-pink-300/40 rounded-lg -rotate-6 animate-float" style={{animationDelay: '1.5s'}}></div>
+          <div className="absolute bottom-16 left-1/3 w-32 h-32 bg-rose-300/40 rounded-lg rotate-12 animate-float" style={{animationDelay: '3s'}}></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-6 relative">
+          <div className="text-center mb-12 animate-fade-in-up">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center font-display">
+              <span className="mr-3"><Bookmark className="w-8 h-8 text-sakura-500 animate-pulse-soft" /></span>
               旅のしおり
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto font-light">
               あなただけの旅程を自由にカスタマイズ！日程や訪問先、思い出も自分専用にまとめて管理できます。
             </p>
           </div>
-          <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-8 mb-8 border border-white/20 hover:shadow-2xl transition-all duration-500 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Bookmark className="w-8 h-8 text-pink-500" />
+              <div className="text-center group">
+                <div className="w-16 h-16 bg-sakura-gradient rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-glow">
+                  <Bookmark className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">旅程管理</h3>
-                <p className="text-gray-600">日ごとの予定や訪問先を簡単に記録</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-sakura-600 transition-colors font-display">旅程管理</h3>
+                <p className="text-gray-600 group-hover:text-gray-700 transition-colors">日ごとの予定や訪問先を簡単に記録</p>
               </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Star className="w-8 h-8 text-blue-500" />
+              <div className="text-center group">
+                <div className="w-16 h-16 bg-indigo-gradient rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-glow-indigo">
+                  <Star className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">お気に入り保存</h3>
-                <p className="text-gray-600">気になったスポットや体験をワンクリック保存</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors font-display">お気に入り保存</h3>
+                <p className="text-gray-600 group-hover:text-gray-700 transition-colors">気になったスポットや体験をワンクリック保存</p>
               </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <BookOpen className="w-8 h-8 text-green-500" />
+              <div className="text-center group">
+                <div className="w-16 h-16 bg-forest-gradient rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <BookOpen className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">思い出アルバム</h3>
-                <p className="text-gray-600">旅の写真やメモをまとめて振り返り</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-forest-600 transition-colors font-display">思い出アルバム</h3>
+                <p className="text-gray-600 group-hover:text-gray-700 transition-colors">旅の写真やメモをまとめて振り返り</p>
               </div>
             </div>
             <div className="text-center mt-8">
               <button
                 onClick={() => navigate('/itinerary')}
-                className="inline-flex items-center gap-3 bg-gradient-to-r from-pink-400 to-pink-600 hover:from-pink-500 hover:to-pink-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                className="group inline-flex items-center gap-3 bg-sakura-gradient hover:shadow-glow text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
-                <Bookmark className="w-5 h-5" />
+                <Bookmark className="w-5 h-5 group-hover:scale-110 transition-transform" />
                 旅のしおりを見る
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           </div>
