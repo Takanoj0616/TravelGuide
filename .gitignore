@@ -22,12 +22,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+# Environment variables
 .env
-.vercel
-
-# local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 .env*.local
-.env
+.vercel
 
 # API build output
 /api/dist/

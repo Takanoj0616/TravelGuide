@@ -1,3 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom Global Styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: linear-gradient(135deg, #fafafa 0%, #f8fafc 100%);
+  }
+  
+  * {
+    border-color: rgba(255, 183, 197, 0.1);
+  }
+}
+
+@layer components {
+  /* Glass morphism effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Shimmer effect for loading states */
+  .shimmer-effect {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .shimmer-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.6),
+      transparent
+    );
+    animation: shimmer 2s infinite;
+  }
+  
+  /* Custom button styles */
+  .btn-primary {
+    @apply bg-gradient-to-r from-sakura-500 to-sakura-600 hover:from-sakura-600 hover:to-sakura-700 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-glow;
+  }
+  
+  .btn-secondary {
+    @apply bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-glow-indigo;
+  }
+  
+  .btn-accent {
+    @apply bg-gradient-to-r from-gold-400 to-gold-500 hover:from-gold-500 hover:to-gold-600 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-glow-gold;
+  }
+  
+  /* Card styles */
+  .card {
+    @apply bg-white/80 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20;
+  }
+  
+  .card-elevated {
+    @apply bg-white/90 backdrop-blur-sm rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/20 transform hover:scale-105;
+  }
+  
+  /* Text gradient effects */
+  .text-gradient-sakura {
+    @apply bg-gradient-to-r from-sakura-600 to-sakura-400 bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-gold-600 to-gold-400 bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-indigo {
+    @apply bg-gradient-to-r from-indigo-600 to-indigo-400 bg-clip-text text-transparent;
+  }
+  
+  /* Floating elements */
+  .floating-element {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .floating-element:nth-child(2) {
+    animation-delay: 1s;
+  }
+  
+  .floating-element:nth-child(3) {
+    animation-delay: 2s;
+  }
+  
+  .floating-element:nth-child(4) {
+    animation-delay: 3s;
+  }
+}
+
+@layer utilities {
+  /* Scroll animations */
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .animate-on-scroll.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Hide scrollbar */
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Custom focus styles */
+  .focus-visible {
+    @apply focus:outline-none focus:ring-2 focus:ring-sakura-500 focus:ring-offset-2;
+  }
+  
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float,
+    .animate-fade-in,
+    .animate-fade-in-up,
+    .animate-fade-in-down,
+    .animate-scale-in,
+    .animate-shimmer,
+    .animate-bounce-slow,
+    .animate-pulse-soft,
+    .animate-gradient-x,
+    .animate-gradient-y,
+    .animate-gradient-xy {
+      animation: none;
+    }
+    
+    .floating-element {
+      animation: none;
+    }
+  }
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #FFB7C5, #FF8DA1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #FF8DA1, #FF6B86);
+}
+
+/* Selection styles */
+::selection {
+  background: rgba(255, 183, 197, 0.3);
+  color: #1f2937;
+}
+
+::-moz-selection {
+  background: rgba(255, 183, 197, 0.3);
+  color: #1f2937;
+}
+
+/* Loading skeleton animation */
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 0px, #e0e0e0 40px, #f0f0f0 80px);
+  background-size: 200px 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+/* Improved button hover effects */
+.btn-hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Sakura petal animation */
+@keyframes sakura-fall {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.sakura-petal {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 183, 197, 0.7);
+  border-radius: 50% 0 50% 0;
+  animation: sakura-fall 10s linear infinite;
+}
+
+/* Improved focus management */
+.focus-ring {
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-sakura-500 focus-visible:ring-offset-2;
+}
+
+/* Japanese-inspired decorative elements */
+.wave-decoration {
+  position: relative;
+  overflow: hidden;
+}
+
+.wave-decoration::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFB7C5' fill-opacity='0.05' fill-rule='nonzero'%3E%3Cpath d='M30 30c0-16.569 13.431-30 30-30v60c-16.569 0-30-13.431-30-30z'/%3E%3Cpath d='M0 30c0-16.569 13.431-30 30-30v60C13.431 60 0 46.569 0 30z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+  opacity: 0.3;
+  pointer-events: none;
+}

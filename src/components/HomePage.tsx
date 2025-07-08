@@ -57,44 +57,55 @@ export const HomePage: React.FC = () => {
   return (
     <div className="relative">
       {/* Hero Section (Slideshow) */}
-      <section className="relative bg-gradient-to-r from-indigo-900 via-blue-900 to-purple-900 text-white py-20">
-        <div className="absolute inset-0 bg-black/20"></div>
+      <section className="relative bg-gradient-to-br from-sakura-500 via-gold-400 to-indigo-600 text-white py-20 overflow-hidden">
+        {/* Floating Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 left-10 w-32 h-32 bg-white/10 rounded-full animate-float"></div>
+          <div className="absolute top-40 right-20 w-24 h-24 bg-gold-300/20 rounded-full animate-float" style={{animationDelay: '1s'}}></div>
+          <div className="absolute bottom-20 left-1/4 w-40 h-40 bg-indigo-300/10 rounded-full animate-float" style={{animationDelay: '2s'}}></div>
+          <div className="absolute top-1/3 right-1/3 w-20 h-20 bg-sakura-300/20 rounded-full animate-float" style={{animationDelay: '3s'}}></div>
+        </div>
+        
+        {/* Background Gradient Animation */}
+        <div className="absolute inset-0 bg-gradient-to-br from-sakura-500/80 via-gold-400/80 to-indigo-600/80 animate-gradient-xy"></div>
+        <div className="absolute inset-0 bg-black/20 backdrop-blur-xs"></div>
+        
         <div className="relative max-w-7xl mx-auto px-6">
-          <div className="text-center space-y-8 transition-all duration-700">
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-              {slides[slideIdx].title1}
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
+          <div className="text-center space-y-8 transition-all duration-700 animate-fade-in-up">
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight font-display">
+              <span className="block animate-fade-in-down">{slides[slideIdx].title1}</span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gold-200 to-gold-400 animate-shimmer animate-fade-in-up">
                 {slides[slideIdx].title2}
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed font-light animate-fade-in-up" style={{animationDelay: '0.3s'}}>
               {slides[slideIdx].desc}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{animationDelay: '0.6s'}}>
               <button
                 onClick={handleGetStarted}
-                className="inline-flex items-center gap-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                className="group inline-flex items-center gap-3 bg-gradient-to-r from-sakura-600 to-sakura-700 hover:from-sakura-700 hover:to-sakura-800 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-glow hover:shadow-xl transform hover:-translate-y-1"
               >
                 {t('home.startJourney')}
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
               <button
                 onClick={handleRealTimeInfo}
-                className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                className="group inline-flex items-center gap-3 bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-glow-indigo hover:shadow-xl transform hover:-translate-y-1"
               >
-                <TrendingUp className="w-5 h-5" />
+                <TrendingUp className="w-5 h-5 group-hover:scale-110 transition-transform" />
                 リアルタイム情報
               </button>
             </div>
             {/* --- Slide Indicators --- */}
-            <div className="flex justify-center items-center gap-3 mt-6">
+            <div className="flex justify-center items-center gap-3 mt-6 animate-fade-in-up" style={{animationDelay: '0.9s'}}>
               {slides.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => setSlideIdx(idx)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 border-2 focus:outline-none ${
+                  className={`w-3 h-3 rounded-full transition-all duration-300 border-2 focus:outline-none hover:scale-110 ${
                     idx === slideIdx
-                      ? 'bg-white border-white shadow-lg scale-125'
+                      ? 'bg-white border-white shadow-glow scale-125 animate-pulse-soft'
                       : 'bg-white/40 border-white/60 hover:bg-white/70'
                   }`}
                   aria-label={`スライド${idx + 1}`}
@@ -106,53 +117,58 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* Real-time Info Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-50 to-indigo-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center">
-              <TrendingUp className="w-8 h-8 mr-3 text-blue-600" />
+      <section className="py-16 bg-gradient-to-br from-indigo-50 via-blue-50 to-sakura-50 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full" style={{backgroundImage: 'radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.1) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(255, 183, 197, 0.1) 0%, transparent 50%)'}}></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-6 relative">
+          <div className="text-center mb-12 animate-fade-in-up">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center font-display">
+              <TrendingUp className="w-8 h-8 mr-3 text-indigo-600 animate-pulse-soft" />
               リアルタイム混雑情報
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto font-light">
               SNSやレビューサイトの情報をリアルタイムで分析し、観光地の混雑状況をお知らせします
             </p>
           </div>
           
-          <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 mb-8 border border-white/20 hover:shadow-2xl transition-all duration-500 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <TrendingUp className="w-8 h-8 text-blue-600" />
+              <div className="text-center group">
+                <div className="w-16 h-16 bg-indigo-gradient rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-glow-indigo">
+                  <TrendingUp className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">リアルタイム更新</h3>
-                <p className="text-gray-600">5分ごとに最新の混雑情報を更新</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors">リアルタイム更新</h3>
+                <p className="text-gray-600 group-hover:text-gray-700 transition-colors">5分ごとに最新の混雑情報を更新</p>
               </div>
               
-              <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <MapPin className="w-8 h-8 text-green-600" />
+              <div className="text-center group">
+                <div className="w-16 h-16 bg-forest-gradient rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <MapPin className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">多様なデータソース</h3>
-                <p className="text-gray-600">Google Places、Twitter、ユーザー投稿を統合</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-forest-600 transition-colors">多様なデータソース</h3>
+                <p className="text-gray-600 group-hover:text-gray-700 transition-colors">Google Places、Twitter、ユーザー投稿を統合</p>
               </div>
               
-              <div className="text-center">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Star className="w-8 h-8 text-purple-600" />
+              <div className="text-center group">
+                <div className="w-16 h-16 bg-sakura-gradient rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-glow">
+                  <Star className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">AI分析</h3>
-                <p className="text-gray-600">信頼度付きで混雑レベルを判定</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-sakura-600 transition-colors">AI分析</h3>
+                <p className="text-gray-600 group-hover:text-gray-700 transition-colors">信頼度付きで混雑レベルを判定</p>
               </div>
             </div>
             
             <div className="text-center mt-8">
               <button
                 onClick={handleRealTimeInfo}
-                className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                className="group inline-flex items-center gap-3 bg-indigo-gradient hover:shadow-glow-indigo text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
-                <TrendingUp className="w-5 h-5" />
+                <TrendingUp className="w-5 h-5 group-hover:scale-110 transition-transform" />
                 リアルタイム情報を見る
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           </div>
@@ -310,44 +326,48 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+      <section className="py-20 bg-gradient-to-br from-white via-sakura-50/30 to-gold-50/30 relative overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute top-10 right-10 w-64 h-64 bg-sakura-200/20 rounded-full blur-3xl animate-pulse-soft"></div>
+        <div className="absolute bottom-10 left-10 w-48 h-48 bg-gold-200/20 rounded-full blur-3xl animate-pulse-soft" style={{animationDelay: '2s'}}></div>
+        
+        <div className="max-w-7xl mx-auto px-6 relative">
+          <div className="text-center mb-16 animate-fade-in-up">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 font-display">
               {t('home.whyChooseTitle')}
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto font-light">
               {t('home.whyChooseDescription')}
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center group hover:transform hover:scale-105 transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:shadow-lg">
+            <div className="text-center group hover:transform hover:scale-105 transition-all duration-500 animate-fade-in-up" style={{animationDelay: '0.1s'}}>
+              <div className="w-16 h-16 bg-indigo-gradient rounded-full flex items-center justify-center mx-auto mb-6 group-hover:shadow-glow-indigo group-hover:scale-110 transition-all duration-300">
                 <MapPin className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">{t('home.feature1Title')}</h3>
-              <p className="text-gray-600 leading-relaxed">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-indigo-600 transition-colors font-display">{t('home.feature1Title')}</h3>
+              <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors">
                 {t('home.feature1Description')}
               </p>
             </div>
 
-            <div className="text-center group hover:transform hover:scale-105 transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:shadow-lg">
+            <div className="text-center group hover:transform hover:scale-105 transition-all duration-500 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+              <div className="w-16 h-16 bg-sakura-gradient rounded-full flex items-center justify-center mx-auto mb-6 group-hover:shadow-glow group-hover:scale-110 transition-all duration-300">
                 <Heart className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">{t('home.feature2Title')}</h3>
-              <p className="text-gray-600 leading-relaxed">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-sakura-600 transition-colors font-display">{t('home.feature2Title')}</h3>
+              <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors">
                 {t('home.feature2Description')}
               </p>
             </div>
 
-            <div className="text-center group hover:transform hover:scale-105 transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:shadow-lg">
+            <div className="text-center group hover:transform hover:scale-105 transition-all duration-500 animate-fade-in-up" style={{animationDelay: '0.3s'}}>
+              <div className="w-16 h-16 bg-gold-gradient rounded-full flex items-center justify-center mx-auto mb-6 group-hover:shadow-glow-gold group-hover:scale-110 transition-all duration-300">
                 <Star className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">{t('home.feature3Title')}</h3>
-              <p className="text-gray-600 leading-relaxed">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-gold-600 transition-colors font-display">{t('home.feature3Title')}</h3>
+              <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors">
                 {t('home.feature3Description')}
               </p>
             </div>
@@ -356,13 +376,18 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* Areas Preview */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+      <section className="py-20 bg-gradient-to-br from-gray-50 via-indigo-50/30 to-sakura-50/30 relative overflow-hidden">
+        {/* Background Animation */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-0 left-0 w-full h-full animate-gradient-xy" style={{background: 'linear-gradient(45deg, rgba(255, 183, 197, 0.1) 0%, rgba(255, 215, 0, 0.1) 25%, rgba(99, 102, 241, 0.1) 50%, rgba(34, 197, 94, 0.1) 75%, rgba(255, 183, 197, 0.1) 100%)', backgroundSize: '400% 400%'}}></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-6 relative">
+          <div className="text-center mb-16 animate-fade-in-up">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 font-display">
               {t('home.exploreRegionsTitle')}
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-600 font-light">
               {t('home.exploreRegionsDescription')}
             </p>
           </div>
@@ -373,19 +398,23 @@ export const HomePage: React.FC = () => {
               { name: t('home.areaYokohamaName'), description: t('home.areaYokohamaDescription'), image: 'https://images.pexels.com/photos/1440476/pexels-photo-1440476.jpeg' },
               { name: t('home.areaSaitamaName'), description: t('home.areaSaitamaDescription'), image: 'https://images.pexels.com/photos/2506923/pexels-photo-2506923.jpeg' },
               { name: t('home.areaChibaName'), description: t('home.areaChibaDescription'), image: 'https://images.pexels.com/photos/1440727/pexels-photo-1440727.jpeg' }
-            ].map((area) => (
-              <div key={area.name} className="group cursor-pointer">
-                <div className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105">
+            ].map((area, index) => (
+              <div key={area.name} className="group cursor-pointer animate-fade-in-up" style={{animationDelay: `${index * 0.1}s`}}>
+                <div className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:transform hover:scale-105 hover:-translate-y-2">
                   <img 
                     src={area.image} 
                     alt={area.name}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <h3 className="text-xl font-bold">{area.name}</h3>
-                    <p className="text-sm opacity-90">{area.description}</p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent group-hover:from-black/50 transition-all duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-sakura-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute bottom-4 left-4 text-white transform group-hover:translate-y-0 transition-transform duration-300">
+                    <h3 className="text-xl font-bold font-display group-hover:text-sakura-200 transition-colors">{area.name}</h3>
+                    <p className="text-sm opacity-90 group-hover:opacity-100 transition-opacity">{area.description}</p>
                   </div>
+                  
+                  {/* Hover Effect Overlay */}
+                  <div className="absolute inset-0 border-2 border-transparent group-hover:border-sakura-300/50 rounded-xl transition-all duration-300"></div>
                 </div>
               </div>
             ))}
