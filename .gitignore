@@ -31,3 +31,6 @@ dist-ssr
 
 # API build output
 /api/dist/
+
+# Firebase service account key
+src/scripts/serviceAccountKey.json
